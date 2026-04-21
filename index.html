@@ -1,197 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DK Supermarket Belize</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DK Supermarket Belize - Quality Groceries</title>
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+            --accent: #4CAF50;
+            --accent-hover: #45a049;
+            --transition: all 0.3s ease;
+        }
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f0f0f;
-  color: #fff;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-/* HEADER */
-header {
-  background: #111;
-  padding: 15px;
-  text-align: center;
-  border-bottom: 1px solid #222;
-}
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-.logo {
-  font-size: 26px;
-  font-weight: 800;
-  color: #25D366;
-  letter-spacing: 2px;
-}
+        header {
+            background-color: var(--bg-card);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
 
-/* SEARCH */
-.search-box {
-  padding: 15px;
-  text-align: center;
-}
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
 
-.search-box input {
-  width: 90%;
-  max-width: 400px;
-  padding: 12px;
-  border-radius: 6px;
-  border: none;
-  font-size: 16px;
-}
+        .logo span {
+            color: var(--accent);
+        }
 
-/* CATEGORY */
-.section {
-  padding: 20px;
-}
+        .search-container {
+            display: flex;
+            width: 45%;
+        }
 
-.section h2 {
-  margin-bottom: 10px;
-}
+        .search-container input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #333;
+            border-radius: 4px 0 0 4px;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            outline: none;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
 
-/* PRODUCT GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 15px;
-}
+        .search-container input:focus {
+            border-color: var(--accent);
+        }
 
-.card {
-  background: #1a1a1a;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: 0.3s;
-}
+        .search-container button {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
 
-.card:hover {
-  transform: scale(1.05);
-}
+        .search-container button:hover {
+            background-color: var(--accent-hover);
+        }
 
-.card img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-}
+        .hero {
+            text-align: center;
+            padding: 6rem 5%;
+            background: linear-gradient(rgba(18,18,18,0.85), rgba(18,18,18,0.85)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1920&q=80') center/cover;
+            border-bottom: 2px solid #333;
+        }
 
-.card p {
-  padding: 10px;
-  font-size: 14px;
-}
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-/* TRUST */
-.trust {
-  padding: 20px;
-}
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.trust-box {
-  background: #1a1a1a;
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 8px;
-}
+        .cta-button {
+            padding: 1rem 2.5rem;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: var(--transition);
+            display: inline-block;
+        }
 
-/* WHATSAPP */
-.whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  padding: 14px;
-  border-radius: 50%;
-}
+        .cta-button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
 
-.whatsapp img {
-  width: 28px;
-}
+        .section-title {
+            text-align: center;
+            margin: 4rem 0 2rem;
+            font-size: 2.2rem;
+        }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #111;
-  color: #aaa;
-}
-</style>
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 0 5%;
+            margin-bottom: 3rem;
+        }
+
+        .category-btn {
+            padding: 0.6rem 1.8rem;
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid #444;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+            padding: 0 5%;
+            margin-bottom: 5rem;
+            min-height: 400px;
+        }
+
+        .product-card {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            text-align: center;
+            padding-bottom: 1.5rem;
+            border: 1px solid #2a2a2a;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            border-color: var(--accent);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            display: block;
+        }
+
+        .product-title {
+            margin: 0.5rem 1rem;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .product-price {
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: #ddd;
+        }
+
+        .add-to-cart {
+            padding: 0.6rem 2rem;
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .trust-section {
+            background-color: var(--bg-card);
+            padding: 5rem 5%;
+            text-align: center;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        .trust-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .trust-item {
+            padding: 2rem;
+            background-color: var(--bg-dark);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .trust-item:hover {
+            transform: translateY(-5px);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .trust-item h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .trust-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background-color: #050505;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info span {
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            z-index: 1000;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.05) translateY(-3px);
+            background-color: #128C7E;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .search-container {
+                width: 100%;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .trust-item {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-  <div class="logo">DK SUPERMARKET</div>
-</header>
+    <header>
+        <a href="#" class="logo">DK <span>SUPERMARKET</span></a>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for products...">
+            <button onclick="searchProducts()">Search</button>
+        </div>
+    </header>
 
-<div class="search-box">
-  <input type="text" id="search" placeholder="Search products..." onkeyup="searchProducts()">
-</div>
+    <section class="hero">
+        <h1>Freshness Delivered Daily</h1>
+        <p>Your premium source for groceries, fresh produce, and daily essentials in Belize. Shop online or visit us in-store.</p>
+        <a href="#shop" class="cta-button">Start Shopping</a>
+    </section>
 
-<!-- GROCERIES -->
-<div class="section">
-  <h2>Groceries</h2>
-  <div class="grid" id="products">
+    <section class="trust-section">
+        <h2>Why Choose DK Supermarket?</h2>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <h3>Quality Guaranteed</h3>
+                <p>We source only the freshest produce and highest-quality goods to ensure your family gets the very best.</p>
+            </div>
+            <div class="trust-item">
+                <h3>Local Convenience</h3>
+                <p>Located right here in Belize City, providing fast, reliable service to our local community.</p>
+            </div>
+            <div class="trust-item">
+                <h3>Secure Shopping</h3>
+                <p>Shop with confidence knowing our store maintains the highest standards of safety and customer care.</p>
+            </div>
+        </div>
+    </section>
 
-    <div class="card"><img src="https://images.unsplash.com/photo-1586201375761-83865001e31c"><p>Rice</p></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1604908176997-431b93f5d1c4"><p>Beans</p></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0"><p>Pasta</p></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c"><p>Sugar</p></div>
+    <h2 class="section-title" id="shop">Our Products</h2>
+    
+    <div class="categories" id="categoryButtons">
+        <button class="category-btn active" onclick="filterCategory('All')">All</button>
+        <button class="category-btn" onclick="filterCategory('Produce')">Produce</button>
+        <button class="category-btn" onclick="filterCategory('Bakery')">Bakery</button>
+        <button class="category-btn" onclick="filterCategory('Meat')">Meat</button>
+        <button class="category-btn" onclick="filterCategory('Pantry')">Pantry</button>
+    </div>
 
-  </div>
-</div>
+    <div class="products-grid" id="productsGrid">
+        </div>
 
-<!-- DRINKS -->
-<div class="section">
-  <h2>Drinks</h2>
-  <div class="grid">
+    <footer>
+        <div class="footer-logo">DK SUPERMARKET</div>
+        <div class="contact-info">
+            <p>Philip Goldson Highway, Belize City, Belize</p>
+            <p>Call Us: <span>+501 223-6666</span></p>
+            <p>Open Monday - Sunday: 08:00 - 21:00</p>
+        </div>
+        <p style="color: #666; font-size: 0.9rem;">Copyright 2026 DK Supermarket Belize. All rights reserved.</p>
+    </footer>
 
-    <div class="card"><img src="https://images.unsplash.com/photo-1580910051074-3eb694886505"><p>Soda</p></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1600275669288-92e4a83b05b4"><p>Juice</p></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1551024709-8f23befc6e67"><p>Water</p></div>
+    <a href="https://wa.me/5012236666" target="_blank" class="whatsapp-float">
+        WhatsApp Us
+    </a>
 
-  </div>
-</div>
+    <script>
+        // ADD ALL YOUR PRODUCTS HERE
+        const products = [
+            { name: "Fresh Local Bananas", price: "$2.50 BZD", category: "Produce", image: "https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=500&auto=format" },
+            { name: "Whole Wheat Bread", price: "$4.00 BZD", category: "Bakery", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format" },
+            { name: "Marie Sharp's Hot Sauce", price: "$6.50 BZD", category: "Pantry", image: "https://images.unsplash.com/photo-1558222218-b7b54eede3f3?w=500&auto=format" },
+            { name: "Fresh Chicken Breast", price: "$8.99 BZD", category: "Meat", image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500&auto=format" },
+            { name: "Red Tomatoes", price: "$3.50 BZD", category: "Produce", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format" },
+            { name: "White Rice 5lb", price: "$7.00 BZD", category: "Pantry", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format" },
+            { name: "Chocolate Cake Slice", price: "$4.50 BZD", category: "Bakery", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format" },
+            { name: "Ground Beef 1lb", price: "$9.50 BZD", category: "Meat", image: "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=500&auto=format" }
+        ];
 
-<!-- SNACKS -->
-<div class="section">
-  <h2>Snacks</h2>
-  <div class="grid">
+        const grid = document.getElementById('productsGrid');
+        const searchInput = document.getElementById('searchInput');
+        let currentCategory = 'All';
 
-    <div class="card"><img src="https://images.unsplash.com/photo-1585238342024-78d387f4a707"><p>Chips</p></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1604908177225-4a9e0c63c879"><p>Cookies</p></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1585238342024-78d387f4a707"><p>Chocolate</p></div>
+        function renderProducts(items) {
+            grid.innerHTML = '';
+            
+            if(items.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #aaa; font-size: 1.2rem;">No products found.</p>';
+                return;
+            }
 
-  </div>
-</div>
+            items.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <span class="product-category">${product.category}</span>
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-price">${product.price}</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
 
-<!-- TRUST -->
-<div class="trust">
-  <h2>Why Shop With Us</h2>
-  <div class="trust-box">Wide variety of products available</div>
-  <div class="trust-box">Affordable prices for everyday shopping</div>
-  <div class="trust-box">Convenient location in Belize</div>
-</div>
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            // Update active button state
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText === category) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
 
-<footer>
-  <p>Belize City, Belize</p>
-  <p id="phone">Phone: +501 XXX-XXXX</p>
-</footer>
+            applyFilters();
+        }
 
-<a class="whatsapp" href="https://wa.me/5010000000">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-</a>
+        function searchProducts() {
+            applyFilters();
+        }
 
-<script>
-function searchProducts() {
-  let input = document.getElementById('search').value.toLowerCase();
-  let cards = document.getElementsByClassName('card');
+        // Real-time search processing
+        searchInput.addEventListener('keyup', applyFilters);
 
-  for (let i = 0; i < cards.length; i++) {
-    let text = cards[i].innerText.toLowerCase();
-    cards[i].style.display = text.includes(input) ? "block" : "none";
-  }
-}
-</script>
+        function applyFilters() {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            const filtered = products.filter(product => {
+                const matchesCategory = currentCategory === 'All' || product.category === currentCategory;
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || product.category.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+            });
 
+            renderProducts(filtered);
+        }
+
+        // Initial render
+        renderProducts(products);
+    </script>
 </body>
 </html>
